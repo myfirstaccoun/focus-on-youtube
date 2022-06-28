@@ -2,7 +2,7 @@ let i = 0;
 
 function run() {
     let commentsContainer = document.getElementById('comments');
-    let videosContainer = document.getElementById('secondary');
+    let videosContainer = document.getElementById('related');
     let nextVideo = document.querySelector("a.ytp-next-button.ytp-button");
     let Autoplay = document.querySelector('[data-tooltip-target-id="ytp-autonav-toggle-button"');
     let startHead = document.querySelector("#start");
@@ -19,8 +19,7 @@ function run() {
     if(i != 1) {
         menu.remove();
         i = 1;
-        // document.querySelector("#scrim").remove();
-        // document.querySelector("#guide").remove();
+        document.querySelector("#scrim").remove();
 
         if(document.querySelector("#theMenuSpaceFocus") == null) {
             let spaceMenu = document.createElement("div");
@@ -41,7 +40,19 @@ function run() {
     document.querySelector(".html5-endscreen") == null? "" : document.querySelector(".html5-endscreen").remove();
     nextVideo == null? "" : nextVideo.remove();
     Autoplay == null? "" : Autoplay.remove();
-    videosContainer == null? "" : videosContainer.remove();
+
+    if(location.href.includes("&list=")) {
+        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.minWidth = "auto";
+        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.width = "auto";
+    } else {
+        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.minWidth = "0px";
+        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.width = "0px";
+    }
+    
+    if(videosContainer != null) {
+        videosContainer.remove();
+    }
+
     commentsContainer == null? "" : commentsContainer.remove();
     
     if(location.pathname == "/") {
