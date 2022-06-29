@@ -42,11 +42,13 @@ function run() {
     Autoplay == null? "" : Autoplay.remove();
 
     if(location.href.includes("&list=")) {
-        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.minWidth = "auto";
-        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.width = "auto";
+        document.querySelector('#secondary-inner.style-scope.ytd-watch-flexy') == null? "" : document.querySelector('#secondary-inner.style-scope.ytd-watch-flexy').style = "width: var(--ytd-watch-flexy-sidebar-width); min-width: var(--ytd-watch-flexy-sidebar-width); height: auto;";
+        document.querySelector('#secondary.style-scope.ytd-watch-flexy') == null? "" : document.querySelector('#secondary.style-scope.ytd-watch-flexy').style = "width: var(--ytd-watch-flexy-sidebar-width); min-width: var(--ytd-watch-flexy-sidebar-width); height: auto;";
     } else {
-        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.minWidth = "0px";
-        document.getElementById('secondary') == null? "" : document.getElementById('secondary').style.width = "0px";
+        console.log(document.getElementById('secondary'));
+        document.querySelector('#secondary.style-scope.ytd-watch-flexy') == null? "" : document.querySelector('#secondary.style-scope.ytd-watch-flexy').style = "width: 0; max-width: 0; min-width: 0; height: 0;";
+        document.getElementById('secondary-inner') == null? "" : document.getElementById('secondary-inner').style = "width: 0; height: 0;";
+        document.getElementById('secondary-inner') == null? "" : document.getElementById('secondary-inner').style.overflow = "hidden";
     }
     
     if(videosContainer != null) {
@@ -55,7 +57,7 @@ function run() {
 
     commentsContainer == null? "" : commentsContainer.remove();
     
-    if(location.pathname == "/") {
+    if(location.pathname == "/" && allVideos != null) {
         if(allVideos.style.opacity != 0 || allVideos.style.zIndex >= 0) {
             allVideos.style.opacity = 0;
             allVideos.style.zIndex = -10;
